@@ -340,6 +340,35 @@ configure_git() {
 
   git config --global alias.c "!sh -c 'git checkout \$(git branch -r | fzf)'"
 
+  # SSH signing: allow local verification (git log/show --show-signature)
+  if git config --global --get gpg.format | grep -q '^ssh$'; then
+    log "Configuring SSH allowed signers for local verification"
+
+    local allowed_dir="$HOME/.config/git"
+    local allowed_file="$allowed_dir/allowed_signers"
+    local signing_key
+    local email
+
+    mkdir -p "$allowed_dir"
+    chmod 700 "$allowed_dir"
+
+    email="$(git config --global user.email || true)"
+    signing_key="$(git config --global user.signingkey || true)"
+
+    if [[ -n "$email" && -n "$signing_key" && -f "$signing_key" ]]; then
+      # Write or update allowed_signers (idempotent)
+      grep -q "$email" "$allowed_file" 2>/dev/null || {
+        printf "%s %s\n" "$email" "$(cat "$signing_key")" >> "$allowed_file"
+        log "Added $email to SSH allowed_signers"
+      }
+
+      chmod 600 "$allowed_file"
+      git config --global gpg.ssh.allowedSignersFile "$allowed_file"
+    else
+      log "Skipping SSH allowed signers setup (missing email or signing key)"
+    fi
+  fi
+
   log "Git configuration complete"
 }
 
