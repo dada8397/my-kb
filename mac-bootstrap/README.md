@@ -108,6 +108,7 @@ git log --show-signature -1
 ## 3) 執行 bootstrap 腳本
 
 ```sh
+cd mac-bootstrap
 chmod +x scripts/bootstrap-mac.sh
 ./scripts/bootstrap-mac.sh
 ```
