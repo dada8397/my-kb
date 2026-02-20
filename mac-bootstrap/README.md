@@ -115,31 +115,11 @@ chmod +x scripts/bootstrap-mac.sh
 
 ---
 
-## 4) 手動步驟（必要）
+## 4) 重新啟動 zsh
 
-### 4.1 設定終端機字型
-腳本會安裝：**MesloLGS Nerd Font**
-
-#### Terminal.app
-1. Terminal -> 設定
-2. 描述檔 -> （你的描述檔）-> 文字
-3. 字型 -> 選擇 **MesloLGS Nerd Font**
-
-#### iTerm2
-1. iTerm2 -> Settings
-2. Profiles -> Text
-3. Font -> 選擇 **MesloLGS Nerd Font**
-
-### 4.2 重新啟動 zsh
 關閉並重新開啟終端機，或執行：
 ```sh
 exec zsh
-```
-
-### 4.3 設定 Powerlevel10k
-執行：
-```sh
-p10k configure
 ```
 
 ---
