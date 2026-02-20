@@ -64,8 +64,8 @@ gh auth status
 
 ### 複製本倉庫
 ```sh
-gh repo clone <owner>/<repo> ~/mac-bootstrap
-cd ~/mac-bootstrap
+gh repo clone dada8397/my-kb ~/my-kb
+cd ~/my-kb
 ```
 
 ## 5) Git 簽章（手動但引導式）
