@@ -45,7 +45,14 @@ eval "$(/usr/local/bin/brew shellenv)"        # Intel
 
 ---
 
-## 2) 選項 A：使用 GitHub CLI（建議用於私人倉庫）
+## 2) 選項 A：直接 clone (public 專案時)
+
+```sh
+git clone https://github.com/dada8397/my-kb.git
+cd my-kb
+```
+
+## 2) 選項 B：使用 GitHub CLI（private 專案時）
 
 ### 安裝 `gh`
 ```sh
